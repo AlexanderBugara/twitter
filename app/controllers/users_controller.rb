@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save 
-      # handle a successful save.
+      log_in @user
       flash[:success] = "Welcome to the Twitter App!"
       redirect_to user_url(@user)
     else 
