@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   post   'login' => 'sessions#create'
   get    'logout' => 'sessions#destroy'
   root   'static_pages#home'
+  resources :microposts, only: [:create, :destroy]
+  #get    'micropost_destroy' => 'microposts#destroy'
   resources :users
 end

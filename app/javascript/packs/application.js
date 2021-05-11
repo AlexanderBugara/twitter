@@ -10,7 +10,6 @@ import "channels"
 
  require ("jquery")
  require ("bootstrap")
- require ("tree")
 
 Rails.start()
 Turbolinks.start()
