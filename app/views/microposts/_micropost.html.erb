@@ -8,3 +8,16 @@
       <%= link_to "Delete", micropost, method: :delete, data: { confirm: "Really?" } %>
     <% end %>
   </span>
+  
+  <% if micropost.likers.count > 0 %>
+    <section class="stats">
+        Likes: <%= micropost.likers.count %>
+    </section>
+  <% end %>
+
+  <% if current_user.liked?(micropost) %>
+    <%= render 'shared/unlike', object: micropost %>
+  <% else %>
+    <%= render 'shared/like', object: micropost %> 
+  <% end %>
+  

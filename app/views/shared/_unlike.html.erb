@@ -1,0 +1,4 @@
+<%= puts object %>
+<%= form_with(model: [object, current_user.likes.find_by(micropost_id: object.id)], method: :delete, remote: true) do |f| %>
+<%= f.submit "Remove like", class: "btn btn-primary" %>
+<% end %>

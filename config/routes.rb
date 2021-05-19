@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get    'likes/like'
+  get    'likes/unlike'
   get    'sessions/new'
   get    'users/new'
   get    'home'   => 'static_pages#home'
@@ -9,7 +11,22 @@ Rails.application.routes.draw do
   post   'login' => 'sessions#create'
   get    'logout' => 'sessions#destroy'
   root   'static_pages#home'
-  resources :microposts, only: [:create, :destroy]
+  resources :microposts, only: [:create, :destroy] do 
+    resources :likes, only: [:create, :destroy]  
+  end
+  
   #get    'micropost_destroy' => 'microposts#destroy'
-  resources :users
+  #resources :users
+  resources :users do
+    member do
+      get :like
+    end
+  end
+  
+  resources :microposts do
+    member do
+      get :like
+    end
+  end
+  
 end

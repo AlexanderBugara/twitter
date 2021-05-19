@@ -27,11 +27,13 @@ class UsersController < ApplicationController
       flash[:danger] = "Please log in"
       redirect_to login_url
     end
-  end      
+  end
 
   private 
   
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      puts "----------------------------------------------"
+      puts params
+    #  params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 end
