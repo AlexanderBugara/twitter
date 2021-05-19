@@ -15,18 +15,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]  
   end
   
-  #get    'micropost_destroy' => 'microposts#destroy'
-  #resources :users
-  resources :users do
-    member do
-      get :like
-    end
-  end
-  
-  resources :microposts do
-    member do
-      get :like
-    end
-  end
+  resources :users
   
 end
