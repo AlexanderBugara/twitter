@@ -21,3 +21,6 @@
     <%= render 'shared/like', object: micropost %> 
   <% end %>
   
+  <%= render 'shared/create', object: micropost %>
+  
+  <p>Comments: <%= render 'shared/comments', object: micropost.comments %></p>

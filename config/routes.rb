@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comment/create'
+  get 'comment/destroy'
   get    'likes/like'
   get    'likes/unlike'
   get    'sessions/new'
@@ -12,7 +14,8 @@ Rails.application.routes.draw do
   get    'logout' => 'sessions#destroy'
   root   'static_pages#home'
   resources :microposts, only: [:create, :destroy] do 
-    resources :likes, only: [:create, :destroy]  
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   
   resources :users

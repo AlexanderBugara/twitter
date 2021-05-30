@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_many :microposts, dependent: :destroy
   has_many :likes, class_name: "Like", foreign_key: "user_id", dependent: :destroy
   has_many :liked_posts, through: :likes, source: :micropost
-
+  has_many :comments, class_name: "Comment", dependent: :destroy
+  
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\-.]+\.[a-z]+\z/i
@@ -26,4 +27,7 @@ class User < ApplicationRecord
     liked_posts.delete(micropost)
   end
 
+  def comment(comment)
+    comments << comment
+  end
 end

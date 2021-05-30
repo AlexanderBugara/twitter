@@ -1,3 +1,3 @@
-<%= form_with(model: [object, current_user.likes.build], method: :post, remote: true) do |f| %>
+<%= form_with(model: [object, current_user.likes.build], remote: true) do |f| %>
 <%= f.submit "Set like", class: "btn btn-primary" %>
 <% end %>
